@@ -1,0 +1,547 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+}
+
+/* Custom Base / Global Styles */
+body {
+  background-color: #0A0800;
+  color: #FFFFFF;
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+/* Headings: #FFD700 bright gold with 10px text shadow */
+h1, h2, h3, h4, .golden-glow {
+  color: #FFD700 !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8) !important;
+}
+
+/* Numbers: #FFA500 with Orbitron font */
+.font-orbitron, .orbitron-number {
+  font-family: "Orbitron", monospace, sans-serif !important;
+  color: #FFA500 !important;
+}
+
+/* Custom UI Component Utilities */
+.arcmeta-card {
+  background: rgba(255, 215, 0, 0.12) !important;
+  border: 2px solid rgba(255, 215, 0, 0.6) !important;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4) !important;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* All cards sweep shine animation */
+.arcmeta-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 0, 0) 0%,
+    rgba(255, 215, 0, 0.4) 50%,
+    rgba(255, 215, 0, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine-sweep 5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes shine-sweep {
+  0% {
+    left: -150%;
+  }
+  20%, 100% {
+    left: 150%;
+  }
+}
+
+.arcmeta-btn-primary {
+  background-color: #FFD700 !important;
+  color: #000000 !important;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.arcmeta-btn-primary:hover {
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.9), 0 0 10px rgba(255, 215, 0, 0.6) !important;
+  transform: translateY(-1px);
+}
+
+.arcmeta-btn-secondary {
+  background-color: transparent !important;
+  border: 2px solid #FFA500 !important;
+  color: #FFA500 !important;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.arcmeta-btn-secondary:hover {
+  background-color: rgba(255, 215, 0, 0.08) !important;
+  border-color: #FFD700 !important;
+  color: #FFD700 !important;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6) !important;
+  transform: translateY(-1px);
+}
+
+.arcmeta-gradient-text {
+  background: linear-gradient(to right, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.font-orbitron {
+  font-family: "Orbitron", monospace, sans-serif !important;
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0800;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFD700;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFA500;
+}
+
+/* Logo shine animation keyframes */
+@keyframes logo-shine {
+  0% {
+    transform: translateX(-150%) skewX(-30deg);
+  }
+  35%, 100% {
+    transform: translateX(150%) skewX(-30deg);
+  }
+}
+
+/* Coin sparkle pulse and shine animation keyframes */
+@keyframes coin-sparkle {
+  0%, 100% {
+    transform: scale(0.9) rotate(0deg);
+    opacity: 0.45;
+    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.4));
+  }
+  50% {
+    transform: scale(1.15) rotate(180deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.95));
+  }
+}
+
+.animate-coin-sparkle {
+  animation: coin-sparkle 2.2s infinite ease-in-out;
+}
+
+/* --- LIGHT MODE SPECIFIC STYLE OVERRIDES --- */
+html.light body {
+  background-color: #F5F0E8 !important;
+  color: #1A1A1A !important;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light .golden-glow,
+html.light [id="my-dao-view"] h1,
+html.light [id="my-dao-view"] h2,
+html.light .text-shadow-glow {
+  color: #000000 !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* Page sections / borders: #F0EBE0 background as requested */
+html.light section,
+html.light .page-section,
+html.light .border-b,
+html.light .border-white\/5,
+html.light .border-white\/10 {
+  border-color: #000000 !important;
+  background-color: #F0EBE0 !important;
+}
+
+/* Cards: background #EDE8D8 cream, border 2px solid #000000, shadow 0 0 15px rgba(0,0,0,0.2) + keeping golden glow border */
+html.light .arcmeta-card,
+html.light [id="arcmeta-toast"],
+html.light .p-6.rounded-2xl.bg-black\/40,
+html.light .rounded-2xl.bg-black\/40 {
+  background: #EDE8D8 !important;
+  background-color: #EDE8D8 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2), 0 0 12px rgba(255, 215, 0, 0.2) !important;
+  color: #1A1A1A !important;
+}
+
+/* Other boxes like detail tab lists or item boxes */
+html.light .p-4.rounded-xl.bg-black\/40,
+html.light .p-5.rounded-xl.bg-black\/40,
+html.light .rounded-2xl.bg-black\/20 {
+  background-color: #EDE8D8 !important;
+  background: #EDE8D8 !important;
+  border: 1px solid #000000 !important;
+  color: #1A1A1A !important;
+}
+
+/* Stats numbers / large bold / Orbitron: #000000 black */
+html.light .font-orbitron,
+html.light .orbitron-number,
+html.light .text-3xl.font-orbitron,
+html.light .text-3xl.font-black.text-white,
+html.light .text-xl.font-orbitron,
+html.light .text-2xl.font-orbitron {
+  color: #000000 !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+}
+
+/* Text primary (black bold) */
+html.light .text-white,
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light strong,
+html.light span.text-white,
+html.light h4.text-white,
+html.light h3.text-white {
+  color: #000000 !important;
+}
+
+/* Text secondary: #333333 (dark) */
+html.light .text-gray-300,
+html.light .text-gray-400,
+html.light .text-gray-500,
+html.light .text-slate-300,
+html.light .text-slate-400,
+html.light .text-slate-500,
+html.light p.text-xs,
+html.light p.text-sm,
+html.light div.text-gray-400,
+html.light div.text-gray-500,
+html.light span.text-gray-500,
+html.light p,
+html.light span,
+html.light .text-xs.font-mono {
+  color: #333333 !important;
+}
+
+/* Navbar background: #DDD8C8, border-bottom: 2px solid #000000 */
+html.light #main-header {
+  background-color: #DDD8C8 !important;
+  border-bottom: 2px solid #000000 !important;
+}
+
+/* Navbar links and active link styling */
+html.light #main-header nav a,
+html.light #header-nav a {
+  color: #1A1A1A !important;
+  border-bottom-color: transparent !important;
+}
+
+html.light #main-header nav a:hover,
+html.light #header-nav a:hover {
+  color: #000000 !important;
+}
+
+/* Active link: #000000 bold underline */
+html.light #main-header nav a.text-\[\#FFD700\],
+html.light #main-header nav a.border-\[\#FFD700\],
+html.light #header-nav a[class*="text-[#FFD700]"],
+html.light #header-nav a.border-b-2,
+html.light #header-nav a.text-white {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #000000 !important;
+  text-underline-offset: 4px !important;
+  border-bottom: none !important;
+}
+
+/* Buttons: #000000 black solid, color #FFFFFF, border: none, glow: 0 0 15px rgba(0,0,0,0.3) */
+html.light .arcmeta-btn-primary,
+html.light button.bg-\[\#FFD700\],
+html.light button.bg-amber-400,
+html.light .bg-amber-400,
+html.light button.bg-\[\#FFA500\],
+html.light button.text-black.bg-white,
+html.light button[id*="connect-button"],
+html.light [id*="connect-button"] {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light .arcmeta-btn-primary *,
+html.light button.bg-\[\#FFD700\] *,
+html.light button.bg-amber-400 *,
+html.light button.bg-\[\#FFA500\] * {
+  color: #FFFFFF !important;
+}
+
+/* Input fields & stats cards background: #E8E3D0 */
+html.light input,
+html.light textarea,
+html.light select,
+html.light .bg-black\/60,
+html.light .bg-slate-900\/60,
+html.light .bg-\[\#0A0800\],
+html.light .bg-\[rgba\(255\,215\,0\,0\.15\)\] {
+  background-color: #E8E3D0 !important;
+  background: #E8E3D0 !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.45) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #333333 !important;
+  opacity: 0.7 !important;
+}
+
+/* Stats cards: #E8E3D0 background */
+html.light .bg-slate-900\/40,
+html.light .bg-black\/30,
+html.light .bg-black\/50,
+html.light .grid-cols-1.md\:grid-cols-2.gap-6.p-6,
+html.light .p-6.rounded-2xl.bg-black\/40 {
+  background-color: #E8E3D0 !important;
+  background: #E8E3D0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Secondary lists: #F0EBE0 background as requested */
+html.light .bg-black\/40,
+html.light .bg-black\/20,
+html.light .bg-white\/5,
+html.light .hover\:bg-white\/15,
+html.light .bg-\[\#FFD700\]\/10,
+html.light .bg-\[\#FFD700\]\/20,
+html.light .bg-emerald-500\/10,
+html.light .bg-red-500\/10 {
+  background-color: #F0EBE0 !important;
+  background: #F0EBE0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Active links / highlight colors mapped to black */
+html.light .text-\[\#FFD700\] {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html.light .hover\:text-\[\#FFD700\]:hover {
+  color: #000000 !important;
+}
+
+/* Badge backgrounds: #000000, text: #FFFFFF */
+html.light .badge,
+html.light [class*="badge"],
+html.light span[class*="bg-emerald-500/10"],
+html.light span[class*="bg-amber-400"],
+html.light span[class*="bg-red-500"] {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+html.light .badge *,
+html.light [class*="badge"] *,
+html.light span[class*="bg-emerald-500/10"] *,
+html.light span[class*="bg-amber-400"] *,
+html.light span[class*="bg-red-500"] * {
+  color: #FFFFFF !important;
+}
+
+/* Progress bars: #000000 fill */
+html.light .progress-bar-fill,
+html.light .bg-\[\#FFD700\],
+html.light div[style*="width"][class*="bg-emerald-400"],
+html.light div[style*="width"][class*="bg-green-500"],
+html.light div[style*="width"][class*="bg-amber-400"],
+html.light .h-2.rounded-full.bg-emerald-400,
+html.light .h-2.rounded-full.bg-amber-400,
+html.light .h-1.5.rounded-full.bg-emerald-400 {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+/* Toggle button behavior in light mode */
+html.light #theme-toggle-btn {
+  background-color: #EDE8D8 !important;
+  border-color: #000000 !important;
+  color: #000000 !important;
+}
+
+html.light #theme-toggle-btn:hover {
+  background-color: #DDD8C8 !important;
+}
+
+/* Positive feedback elements (passed, achieved, etc.) */
+html.light .text-emerald-400,
+html.light .text-green-400,
+html.light .text-\[\#00FF88\],
+html.light .text-green-500 {
+  color: #1E6B3F !important;
+}
+
+/* Footer: #DDD8C8 background */
+html.light footer,
+html.light .footer-section,
+html.light [id="dashboard-footer"] {
+  background-color: #DDD8C8 !important;
+  background: #DDD8C8 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  color: #333333 !important;
+}
+
+html.light footer *,
+html.light [id="dashboard-footer"] * {
+  color: #333333 !important;
+}
+
+/* --- EXTRA WALLET SPECIFIC FIXES FOR LIGHT MODE --- */
+
+/* Fix 2: Wallet button in Light Mode (when NOT connected) */
+html.light #arcmeta-connect-btn {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FFD700 !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+}
+
+html.light #arcmeta-connect-btn * {
+  color: #FFFFFF !important;
+}
+
+/* Fix 2: When connected in light mode */
+html.light #premium-wallet-card {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  border: 2px solid #FFD700 !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Connected address text to be gold #FFD700 */
+html.light #arcmeta-address-btn {
+  color: #FFD700 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 215, 0, 0.4) !important;
+}
+
+html.light #arcmeta-address-btn:hover {
+  color: #FFA500 !important;
+  border-color: #FFD700 !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Disconnect button styled to remain legible on black background */
+html.light #arcmeta-disconnect-btn {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #F87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+html.light #arcmeta-disconnect-btn:hover {
+  background-color: rgba(239, 68, 68, 0.3) !important;
+  color: #EF4444 !important;
+}
+
+/* Connected status active label on card */
+html.light #arcmeta-connected-status {
+  color: #FFFFFF !important;
+}
+
+/* Green dot must still be visible and green */
+html.light .bg-\[\#00FF88\] {
+  background-color: #00FF88 !important;
+}
+
+/* Balance blocks on black backdrop in light mode card */
+html.light #premium-wallet-card .bg-black\/5,
+html.light #premium-wallet-card .border-black\/5 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.light #premium-wallet-card span,
+html.light #premium-wallet-card .text-gray-400 {
+  color: #9CA3AF !important; /* light gray for headers like 'USDC Balance' on black */
+}
+
+html.light #premium-wallet-card .text-\[\#00FF88\] {
+  color: #00FF88 !important;
+}
+
+html.light #premium-wallet-card .text-\[\#00BFFF\] {
+  color: #00BFFF !important;
+}
+
+/* Wallet modal/dropdown in light mode */
+html.light [data-rk] [role="dialog"],
+html.light [data-rk] [role="dialog"] > div,
+html.light [data-rk] [role="dialog"] [class*="Modal"],
+html.light [data-rk] [class*="Modal"],
+html.light [data-rk] [class*="Dropdown"],
+html.light [data-rk] [class*="Menu"],
+html.light [data-rk] [class*="Popover"],
+html.light [data-rk] [role="menu"] {
+  background: #1A1A1A !important;
+  background-color: #1A1A1A !important;
+  border: 2px solid #FFD700 !important;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.45) !important;
+  border-radius: 16px !important;
+}
+
+html.light [data-rk] [role="dialog"] *,
+html.light [data-rk] [role="menu"] *,
+html.light [data-rk] [class*="Menu"] *,
+html.light [data-rk] [class*="Modal"] *,
+html.light [data-rk] [class*="Popover"] * {
+  color: #FFFFFF !important;
+}
+
+html.light [data-rk] button,
+html.light [data-rk] [role="button"],
+html.light [data-rk] a {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+html.light [data-rk] button:hover,
+html.light [data-rk] [role="button"]:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: #FFD700 !important;
+}
+
